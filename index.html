@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Gayatri_portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background-color: rgb(1,166,240);
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #fff;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #F2A007;
+    }
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #00587A;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .footer {
+      background-color: rgb(243, 79, 28);
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #00587A;
+      color: white;
+      text-align: center;
+      padding: 0;
+    }
+
+    /* Counter Circle */
+    .counter-item h2 {
+      color: #00587A;
+      font-weight: bold;
+    }
+
+    .counter-item p {
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      background-color: rgb(1,166,240);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #0292ce;
+    }
+
+    /* ---------- RESPONSIVE FIXES ---------- */
+    @media (max-width: 768px) {
+      /* Navbar */
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+
+      /* Hero Text + Image */
+      .col-lg-6.mb-6.mb-lg-0.text-center.text-lg-start {
+        text-align: center !important;
+      }
+
+      .col-lg-6.mb-6.mb-lg-0 img {
+        margin: 10px auto;
+        display: block;
+      }
+
+
+      /* Skills Section */
+      #services .col-md-2 {
+        width: 50%;
+      }
+
+      #services img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* About Section */
+      #about .row {
+        flex-direction: column;
+      }
+
+      #about img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      #about p {
+        text-align: justify;
+      }
+
+      /* Tools Section */
+      #about .row.mt-2 > div {
+        margin-bottom: 20px;
+      }
+
+      /* Contact Section */
+      #contact .container {
+        text-align: center;
+      }
+
+      #contact i {
+        display: block;
+        margin-top: 10px;
+      }
+
+      /* Footer */
+      .footer p {
+        font-size: 0.9rem;
+        margin: 5px 0;
+      }
+    }
+    #more {display: none;}
+
+    .circle-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+  }
+
+  .main-circle-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .counter-item {
+    position: absolute;
+    top: var(--pos-y);
+    left: var(--pos-x);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .counter-item h2 {
+    color:#00587A;
+    font-weight: bold;
+    
+  }
+
+  .counter-item b {
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .circle-container {
+      width: 250px;
+      height: 250px;
+    }
+
+    .main-circle-img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .counter-item h2 {
+      font-size: 1rem;
+    }
+
+    .counter-item b {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .circle-container {
+      width: 200px;
+      height: 200px;
+    }
+
+    .main-circle-img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .counter-item {
+      font-size: 0.7rem;
+    }
+
+    .counter-item h2 {
+      font-size: 0.9rem;
+    }
+  }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">GAYATRI KHATATE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="mywork.html">My Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactme.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO / INTRO SECTION -->
+<section class="section bg-light py-2">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Column -->
+      <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+        <h1 class="fw-bold">Aspiring Designer. Evolving Marketer. Future Innovator.</h1>
+        <p style="text-align: justify;">
+          Hi, I’m Gayatri Khatate, an enthusiastic Graphic Designer, Web Designer
+          and Digital Marketing learner <span id="dots">...</span><span id="more">with a passion for creativity and technology.
+             I’ve recently started my professional journey, focusing on developing strong design skills, understanding user experience, and mastering digital tools that help brands stand out online.
+          </span>
+          <button onclick="myFunction()" id="myBtn" class="btn btn-primary btn-sm rounded-pill mt-2">Read more</button>
+        </p>
+        <img src="Business women image with laptop.png" alt="Business Woman"
+          class="img-fluid mt-3 rounded shadow" style="max-width: 350px; height: auto;">
+      </div>
+
+      <!-- Right Column -->
+      <div class="col-lg-6 text-center">
+        <h2 class="section-title mb-4">Projects Completed Successfully</h2>
+
+        <!-- Circular Counter Wrapper -->
+        <div class="circle-container position-relative mx-auto">
+          <img src="Digital Marketing image3.jpg" alt="Digital Marketing"
+            class="main-circle-img rounded-circle img-fluid">
+
+          <!-- Counter items arranged around the circle -->
+          <div class="counter-item" style="--pos-x:50%; --pos-y:5%;">
+            <a href="projects.html"><h2 class="counter" data-target="1">0</h2><b>Projects</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:90%; --pos-y:20%;">
+            <a href="brandings.html"><h2 class="counter" data-target="3">0</h2><b>Brandings</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:95%; --pos-y:50%;">
+            <a href="promotions.html"><h2 class="counter" data-target="2">0</h2><b>Promotions</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:90%; --pos-y:80%;">
+            <a href="facebookposts.html"><h2 class="counter" data-target="26">0</h2><b>Facebook Posts</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:10%; --pos-y:80%;">
+            <a href="instagramposts.html"><h2 class="counter" data-target="24">0</h2><b>Instagram<br> Posts</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:5%; --pos-y:50%;">
+            <a href="websites.html"><h2 class="counter" data-target="1">0</h2><b>Websites</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:10%; --pos-y:20%;">
+            <a href="googlepage.html"><h2 class="counter" data-target="1">0</h2><b>Google Page</b></a>
+          </div>
+          <div class="counter-item" style="--pos-x:50%; --pos-y:95%;">
+            <h2 class="counter" data-target="0">0</h2><b>YouTube</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SKILLS -->
+<section id="services" class="section bg-light">
+  <div class="container-fluid" style="margin-top: -20px;">
+    <h2 class="section-title text-center">Skills</h2>
+    <div class="row text-center">
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" style="margin-top: -20px;">
+        <a href="mywork.html#banners">
+          <img src="Graphic Design.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>Graphic Design</h6>
+        </a>
+      </div>
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" data-aos-delay="100" style="margin-top: -20px;">
+        <a href="mywork.html#personal project">
+          <img src="Web Design.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>Web Design</h6>
+        </a>
+      </div>
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" data-aos-delay="200" style="margin-top: -20px;">
+        <a href="mywork.html#brandings">
+          <img src="Digital Marketing.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>Digital Marketing</h6>
+        </a>
+      </div>
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" data-aos-delay="300" style="margin-top: -20px;">
+        <a href="mywork.html#brandings">
+          <img src="Content Writing.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>Content Writing & Copywriting</h6>
+        </a>
+      </div>
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" data-aos-delay="400" style="margin-top: -20px;">
+        <a href="https://share.google/f4kBdQfNLDfsw1ckt">
+          <img src="SEO.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>SEO</h6>
+        </a>
+      </div>
+      <div class="col-md-2 col-6 mb-4" data-aos="fade-up" data-aos-delay="500" style="margin-top: -20px;">
+        <a href="mywork.html#brandings">
+          <img src="Digital Ads Management.jpg" alt="" class="img-fluid mb-2" style="height:137px; width:170px;">
+          <h6>Digital Ads Management</h6>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section bg-light">
+  <div class="container-fluid" style="margin-top: -90px;">
+    <h2 class="section-title" style="margin-top: 10px;">About Me</h2>
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <img src="Digital Marketing image2.jpg" alt="" style="height:250px; width:100%;margin-top: -40px;">
+      </div>
+      <div class="col-md-5">
+        <p style="text-align:justify;">Designed branding materials and social media creatives for small businesses and student projects.
+           Built responsive personal and demo websites using HTML, CSS, JavaScript.
+           Created digital marketing content to promote events and online campaigns.
+           Completed online certifications and workshops in Graphic Design, Digital Marketing, and Web Design.
+           Developed a personal portfolio website to showcase creative work and technical skills.
+           Strong communication and teamwork abilities, with a proactive learning attitude.</p>
+      </div>
+    </div>
+   
+   
+    <section id="tools i use" class="section bg-light" style="margin-top: -45px;">
+    <div class="row mt-2" style="background-color:rgb(193, 244, 245);">
+      <h2 class="section-title" style="margin-top:10px">Tools I Use</h2>
+      <div class="col-md-4 text-left" data-aos="zoom-in">
+        <h4 style="color:#F2A007;margin-top: -35px;">🎨 <b>Graphic Design & Editing</b></h4>
+        <ul class="list-unstyled">
+          <li><b style="color:#00587A">Adobe Photoshop</b> – Image editing and social media creatives</li>
+          <li><b style="color:#00587A">Adobe Illustrator</b> / CorelDRAW – Logo design and vector graphics</li>
+          <li><b style="color:#00587A">Canva</b> – Quick visual content creation</li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-left" data-aos="zoom-in" data-aos-delay="100">
+        <h4 style="color:#F2A007;margin-top: -35px;">🌐 <b>Web Design & Development</b></h4>
+        <ul class="list-unstyled">
+          <li><b style="color:#00587A">HTML, CSS, JavaScript</b> – Front-end web design</li>
+          <li><b style="color:#00587A">VS Code</b> – Coding environment</li>
+          <li><b style="color:#00587A">GitHub</b> – Version control and project hosting</li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-left" data-aos="zoom-in" data-aos-delay="200">
+        <h4 style="color:#F2A007;margin-top: -35px;">📱 <b>Digital Marketing & Analytics</b></h4>
+        <ul class="list-unstyled">
+          <li><b style="color:#00587A">Google Analytics</b> – Website traffic insights</li>
+          <li><b style="color:#00587A">Google Ads & Meta Ads</b> – Basic campaign management</li>
+          <li><b style="color:#00587A">SEO Tools</b> – Keyword research and optimization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" style="background-color:#f8f9fa;" data-aos="fade-up">
+  <div class="container-fluid text-center" style="margin-top: -120px">
+    <button type="button" class="btn" style="background-color:rgb(127,188,0);margin-top: 10px;">
+      <a href="contactme.html" style="color:white;">Contact Me</a>
+    </button><br><br>
+    <div id="bi bi-telephone-fill" style="margin-top: -15px;"><i class="bi bi-telephone-fill" style="color:rgb(127,188,0); font-size:1.2rem;"></i>
+    <b>+91-8928766199</b></div>
+    <div id="bi bi-envelope-fill" ><i class="bi bi-envelope-fill" style="color:rgb(127,188,0); font-size:1.2rem;"></i>
+    <b>gayatrikhatate@gmail.com</b></div>
+    <div id="fab fa-google"> <i class="fab fa-google" style="color:rgb(243,79,28);"></i>
+    <a href="https://share.google/f4kBdQfNLDfsw1ckt"><b>Gayatri Creative Works</b></a></div>
+    <div id="fab fa-facebook"><i class="fab fa-facebook" style="color:rgb(1,166,240);"></i>
+    <a href="https://www.facebook.com/share/19ooKgRbey/"><b>Facebook</b></a></div>
+    <div id="fab fa-linkedin"><i class="fab fa-linkedin" style="color:rgb(1,166,240);"></i>
+    <a href="https://www.linkedin.com/in/gayatri-khatate-849b35300"><b>LinkedIn</b></a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container-fluid">
+    <p>&copy; All rights reserved.</p>
+    <p>Designed by Gayatri Khatate</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+  const speed = 200;
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute("data-target");
+      const count = +counter.innerText;
+      const increment = target > 0 ? Math.ceil(target / speed) : 1;
+
+      if (count < target) {
+        counter.innerText = Math.min(count + increment, target);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target; // ensure exact final value
+      }
+    };
+
+    // Only run if target > 0 to avoid infinite loops
+    if (+counter.getAttribute("data-target") > 0) {
+      updateCount();
+    } else {
+      counter.innerText = counter.getAttribute("data-target") || "0";
+    }
+  });
+
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+});
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+function myFunction() {
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("myBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.textContent = "Read more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.textContent = "Read less";
+      moreText.style.display = "inline";
+    }
+  }
+</script>
+</body>
+</html>
